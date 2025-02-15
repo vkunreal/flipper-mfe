@@ -6,7 +6,7 @@ import packageJson from "./package.json";
 import "dotenv/config";
 
 const mode = (process.env.NODE_ENV ?? "development") as Mode;
-const port = ~~(process.env.PORT ?? 3000);
+const port = ~~(process.env.PORT ?? 3001);
 
 const { ModuleFederationPlugin } = webpack.container;
 
@@ -23,10 +23,10 @@ export default () => {
 
   config.plugins.push(
     new ModuleFederationPlugin({
-      name: "bootstrap",
-      // filename: "remoteEntry.js",
-      remotes: {
-        mfe_auth: `mfe_auth@http://localhost:3001/remoteEntry.js`,
+      name: "mfe_auth",
+      filename: "remoteEntry.js",
+      exposes: {
+        "./Router": "./src/router/Router.tsx",
       },
       shared: {
         ...packageJson.dependencies,
