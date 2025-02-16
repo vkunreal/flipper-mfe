@@ -1,2 +1,29 @@
-node_modules
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# TypeScript
+*.tsbuildinfo
+*.js
+*.js.map
+*.d.ts
+
+# Директории сборки
+/dist/
+/build/
+/out/
+
+# Логи
+logs/
+*.log
+
+# IDE и редакторы
+.idea/
+.vscode/
 .DS_Store
+
+# Операционные системы
+Thumbs.db
+ehthumbs.db
+.Spotlight-V100
+.Trashes

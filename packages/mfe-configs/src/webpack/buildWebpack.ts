@@ -1,5 +1,6 @@
 export type { Configuration as DevServerConfiguration } from "webpack-dev-server";
-import { buildDevServer, buildLoaders, buildPlugins, Config } from ".";
+import { buildDevServer, buildLoaders, buildPlugins } from ".";
+import { Config } from "../types/types";
 import webpack from "webpack";
 
 export const buildWebpack = (config: Config): webpack.Configuration => {

@@ -1,4 +1,4 @@
-import { buildWebpack, Mode } from "@packages/build-config";
+import { buildWebpack, Mode } from "@packages/mfe-configs";
 import webpack from "webpack";
 import path from "path";
 import packageJson from "./package.json";
@@ -21,30 +21,31 @@ export default () => {
     },
   });
 
-  config.plugins.push(
-    new ModuleFederationPlugin({
-      name: "mfe_auth",
-      filename: "remoteEntry.js",
-      exposes: {
-        "./Router": "./src/router/Router.tsx",
-      },
-      shared: {
-        ...packageJson.dependencies,
-        react: {
-          eager: true,
-          requiredVersion: packageJson.dependencies["react"],
+  config?.plugins &&
+    config.plugins.push(
+      new ModuleFederationPlugin({
+        name: "mfe_auth",
+        filename: "remoteEntry.js",
+        exposes: {
+          "./Router": "./src/router/Router.tsx",
         },
-        "react-router-dom": {
-          eager: true,
-          requiredVersion: packageJson.dependencies["react-router-dom"],
+        shared: {
+          ...packageJson.dependencies,
+          react: {
+            eager: true,
+            requiredVersion: packageJson.dependencies["react"],
+          },
+          "react-router-dom": {
+            eager: true,
+            requiredVersion: packageJson.dependencies["react-router-dom"],
+          },
+          "react-dom": {
+            eager: true,
+            requiredVersion: packageJson.dependencies["react-dom"],
+          },
         },
-        "react-dom": {
-          eager: true,
-          requiredVersion: packageJson.dependencies["react-dom"],
-        },
-      },
-    })
-  );
+      })
+    );
 
   return config;
 };
