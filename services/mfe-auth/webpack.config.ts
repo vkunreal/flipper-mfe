@@ -1,51 +1,52 @@
-import { buildWebpack, Mode } from "@packages/mfe-configs";
-import webpack from "webpack";
-import path from "path";
-import packageJson from "./package.json";
+import { buildWebpack, Mode } from '@packages/mfe-configs'
+import webpack from 'webpack'
+import path from 'path'
+import packageJson from './package.json'
 
-import "dotenv/config";
+import 'dotenv/config'
 
-const mode = (process.env.NODE_ENV ?? "development") as Mode;
-const port = ~~(process.env.PORT ?? 3001);
+const mode = (process.env.NODE_ENV ?? 'development') as Mode
+const port = ~~(process.env.PORT ?? 3001)
 
-const { ModuleFederationPlugin } = webpack.container;
+const { ModuleFederationPlugin } = webpack.container
 
 export default () => {
   const config = buildWebpack({
     mode,
     port,
     buildPaths: {
-      entry: path.resolve(__dirname, "src", "index.tsx"),
-      output: path.resolve(__dirname, "build"),
-      html: path.resolve(__dirname, "src", "index.html"),
+      entry: path.resolve(__dirname, 'src', 'index.tsx'),
+      output: path.resolve(__dirname, 'build'),
+      html: path.resolve(__dirname, 'src', 'index.html'),
     },
-  });
+  })
 
-  config?.plugins &&
+  if (config?.plugins) {
     config.plugins.push(
       new ModuleFederationPlugin({
-        name: "mfe_auth",
-        filename: "remoteEntry.js",
+        name: 'mfe_auth',
+        filename: 'remoteEntry.js',
         exposes: {
-          "./Router": "./src/router/Router.tsx",
+          './Router': './src/router/Router.tsx',
         },
         shared: {
           ...packageJson.dependencies,
           react: {
             eager: true,
-            requiredVersion: packageJson.dependencies["react"],
+            requiredVersion: packageJson.dependencies['react'],
           },
-          "react-router-dom": {
+          'react-router-dom': {
             eager: true,
-            requiredVersion: packageJson.dependencies["react-router-dom"],
+            requiredVersion: packageJson.dependencies['react-router-dom'],
           },
-          "react-dom": {
+          'react-dom': {
             eager: true,
-            requiredVersion: packageJson.dependencies["react-dom"],
+            requiredVersion: packageJson.dependencies['react-dom'],
           },
         },
-      })
-    );
+      }),
+    )
+  }
 
-  return config;
-};
+  return config
+}
