@@ -19,6 +19,6 @@
   "devDependencies": {
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
-    "@packages/mfe-configs": "file:../../packages/mfe-configs"
+    "@packages/mfe-configs": "*"
   }
 }
