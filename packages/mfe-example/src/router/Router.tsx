@@ -1,16 +1,15 @@
-import { lazy } from 'react'
+import { Suspense, lazy } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
-import { MFESuspense } from '@packages/ui-kit/src'
 
-const AuthPage = lazy(() => import('../pages/AuthPage'))
+const AuthPage = lazy(() => import('../pages/Page'))
 
 const routes = [
   {
     path: '/auth',
     element: (
-      <MFESuspense>
+      <Suspense fallback={<div>Loading...</div>}>
         <AuthPage />
-      </MFESuspense>
+      </Suspense>
     ),
   },
 ]

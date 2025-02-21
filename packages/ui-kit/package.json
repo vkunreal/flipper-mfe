@@ -1,0 +1,10 @@
+{
+  "name": "@packages/ui-kit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/index.ts",
+  "license": "ISC",
+  "devDependencies": {
+    "@packages/mfe-configs": "*"
+  }
+}

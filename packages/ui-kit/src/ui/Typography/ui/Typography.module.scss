@@ -1,0 +1,18 @@
+.typography {
+  font-family: Helvetica;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+}
+
+$headings: (
+  sm: 12px,
+  md: 16px,
+  lg: 20px,
+  xl: 24px,
+);
+
+@each $heading, $size in $headings {
+  .#{$heading} {
+    font-size: $size;
+  }
+}

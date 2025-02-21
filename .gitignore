@@ -7,7 +7,6 @@ yarn-error.log
 # TypeScript
 *.tsbuildinfo
 *.js.map
-*.d.ts
 
 # Директории сборки
 /dist/
