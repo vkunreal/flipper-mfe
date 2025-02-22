@@ -2,7 +2,7 @@ import { lazy } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
 import { MFESuspense } from '@packages/ui-kit/src'
 
-const AuthPage = lazy(() => import('../pages/AuthPage'))
+const AuthPage = lazy(() => import('../ui/AuthPage/'))
 
 const routes = [
   {

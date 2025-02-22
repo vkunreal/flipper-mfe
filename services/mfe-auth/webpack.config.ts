@@ -19,6 +19,9 @@ export default () => {
       output: path.resolve(__dirname, 'build'),
       html: path.resolve(__dirname, 'src', 'index.html'),
     },
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
   })
 
   if (config?.plugins) {
@@ -27,7 +30,7 @@ export default () => {
         name: 'mfe_auth',
         filename: 'remoteEntry.js',
         exposes: {
-          './Router': './src/router/Router.tsx',
+          './Router': './src/app/router/Router.tsx',
         },
         shared: {
           ...packageJson.dependencies,

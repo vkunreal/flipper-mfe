@@ -9,6 +9,7 @@ $headings: (
   md: 16px,
   lg: 20px,
   xl: 24px,
+  xxl: 28px,
 );
 
 @each $heading, $size in $headings {

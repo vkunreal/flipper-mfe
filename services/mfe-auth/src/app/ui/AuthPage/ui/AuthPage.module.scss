@@ -1,0 +1,21 @@
+// @use '@packages/ui-kit/src/styles/mixins.scss' as *;
+
+.wrapper {
+  margin-top: 20vh;
+}
+
+.title {
+  width: 100%;
+
+  & a {
+    color: #333;
+    text-decoration: unset;
+  }
+}
+
+.inputBlock {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

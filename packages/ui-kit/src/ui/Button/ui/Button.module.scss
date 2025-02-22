@@ -1,0 +1,20 @@
+@use '../../../styles/pallete.scss' as *;
+
+.button {
+  background-color: $primary;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  overflow: hidden;
+
+  &:hover {
+    background-color: $primaryHover;
+  }
+
+  &:active {
+    background-color: $primaryActive;
+  }
+}

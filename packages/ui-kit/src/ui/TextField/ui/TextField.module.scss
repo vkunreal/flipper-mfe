@@ -1,0 +1,34 @@
+@use '../../../styles/pallete.scss' as *;
+
+.textField {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid $grey;
+  transition: 0.3s;
+  resize: none;
+  font-size: 17px;
+  box-sizing: border-box;
+
+  &::placeholder {
+    transition: 0.3s;
+  }
+
+  &:hover {
+    border-color: $grey2;
+  }
+
+  &:focus {
+    border-color: $primaryLight;
+    outline: none;
+
+    &::placeholder {
+      color: $grey2;
+    }
+  }
+
+  &::selection {
+    background-color: $primaryLight;
+    color: $white;
+  }
+}

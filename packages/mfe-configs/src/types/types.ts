@@ -7,7 +7,10 @@ interface BuildPaths {
 }
 
 export interface Config {
-  buildPaths: BuildPaths;
   mode: Mode;
   port: number;
+  buildPaths: BuildPaths;
+  alias?: {
+    [key: string]: string;
+  };
 }
