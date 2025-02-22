@@ -7,6 +7,7 @@ export const buildWebpack = (config: Config): webpack.Configuration => {
   const {
     mode,
     port,
+    publicPath,
     buildPaths: { entry, output, html },
   } = config;
 
@@ -20,6 +21,7 @@ export const buildWebpack = (config: Config): webpack.Configuration => {
       path: output,
       filename: "[name].[contenthash].js",
       clean: true,
+      ...(publicPath ? { publicPath } : {}),
     },
     resolve: {
       extensions: [".tsx", ".ts", ".js", ".jsx", ".css", ".scss", ".sass"],

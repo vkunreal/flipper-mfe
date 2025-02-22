@@ -1,0 +1,25 @@
+{
+  "name": "mfe_todolist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/index.tsx",
+  "license": "ISC",
+  "scripts": {
+    "start": "webpack serve",
+    "build": "NODE_ENV=production webpack",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "unit:test": "jest"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.1.5"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@packages/mfe-configs": "*",
+    "@packages/ui-kit": "*"
+  }
+}

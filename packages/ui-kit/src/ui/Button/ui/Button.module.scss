@@ -18,3 +18,17 @@
     background-color: $primaryActive;
   }
 }
+
+.disable,
+.loading {
+  background-color: $grey2;
+  color: $white;
+
+  &:hover {
+    background-color: $grey2;
+  }
+
+  &:active {
+    background-color: $grey2;
+  }
+}

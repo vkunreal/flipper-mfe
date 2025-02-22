@@ -1,4 +1,4 @@
-import { buildWebpack, Mode } from '@packages/mfe-configs/src'
+import { buildWebpack, Mode } from '@packages/mfe-configs'
 import webpack from 'webpack'
 import path from 'path'
 import packageJson from './package.json'
@@ -6,7 +6,7 @@ import packageJson from './package.json'
 import 'dotenv/config'
 
 const mode = (process.env.NODE_ENV ?? 'development') as Mode
-const port = ~~(process.env.PORT ?? 3000)
+const port = ~~(process.env.PORT ?? 3002)
 
 const { ModuleFederationPlugin } = webpack.container
 
@@ -14,20 +14,24 @@ export default () => {
   const config = buildWebpack({
     mode,
     port,
+    publicPath: `http://localhost:${port}/`,
     buildPaths: {
       entry: path.resolve(__dirname, 'src', 'index.tsx'),
       output: path.resolve(__dirname, 'build'),
       html: path.resolve(__dirname, 'src', 'index.html'),
+    },
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
     },
   })
 
   if (config?.plugins) {
     config.plugins.push(
       new ModuleFederationPlugin({
-        name: 'bootstrap',
-        remotes: {
-          mfe_auth: `mfe_auth@http://localhost:3001/remoteEntry.js`,
-          mfe_todolist: `mfe_todolist@http://localhost:3002/remoteEntry.js`,
+        name: 'mfe_todolist',
+        filename: 'remoteEntry.js',
+        exposes: {
+          './Router': './src/app/router/Router.tsx',
         },
         shared: {
           ...packageJson.dependencies,

@@ -9,6 +9,7 @@ export const Wrapper: FC<IWrapper> = ({
   className = '',
   large = false,
   small = false,
+  width,
 }) => {
   return (
     <div
@@ -18,6 +19,9 @@ export const Wrapper: FC<IWrapper> = ({
         small ? styles.small : '',
         className,
       )}
+      {...(width && {
+        style: { maxWidth: `${width}px` },
+      })}
     >
       {children}
     </div>

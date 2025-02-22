@@ -14,6 +14,7 @@ export default () => {
   const config = buildWebpack({
     mode,
     port,
+    publicPath: `http://localhost:${port}/`,
     buildPaths: {
       entry: path.resolve(__dirname, 'src', 'index.tsx'),
       output: path.resolve(__dirname, 'build'),
